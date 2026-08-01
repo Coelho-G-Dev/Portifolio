@@ -1,0 +1,28 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8A2BE2"/>
+      <stop offset="100%" stop-color="#e94560"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="120" fill="#161625"/>
+  <rect x="16" y="16" width="480" height="480" rx="104" fill="url(#brandGradient)"/>
+
+  <text x="256" y="270"
+        font-family="Poppins, sans-serif"
+        font-weight="700"
+        font-size="220"
+        fill="#ffffff"
+        text-anchor="middle"
+        dominant-baseline="central"
+        letter-spacing="-6">GC</text>
+
+  <text x="256" y="392"
+        font-family="Poppins, sans-serif"
+        font-weight="500"
+        font-size="46"
+        fill="#ffffff"
+        fill-opacity="0.85"
+        text-anchor="middle">&lt;/&gt;</text>
+</svg>

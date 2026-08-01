@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const translations = {
         en: {
             pageTitle: "Gabriel Coelho - Backend Developer",
@@ -24,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modalTech: "Technologies Used", modalFeatures: "Main Features", modalInfo: "Project Information",
             projectCardFooter: "Click to see details",
             statusCompleted: "Completed", statusInProgress: "In development",
+            skipLink: "Skip to content", ariaTheme: "Toggle theme", ariaLang: "Toggle language",
         },
         pt: {
             pageTitle: "Gabriel Coelho - Desenvolvedor Back-End",
@@ -48,8 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
             modalTech: "Tecnologias Utilizadas", modalFeatures: "Principais Funcionalidades", modalInfo: "Informações do Projeto",
             projectCardFooter: "Clique para ver detalhes",
             statusCompleted: "Concluído", statusInProgress: "Em desenvolvimento",
+            skipLink: "Pular para o conteúdo", ariaTheme: "Mudar tema", ariaLang: "Mudar idioma",
         }
     };
+
     const portfolioData = {
         typingEffect: {
             pt: ["Gabriel Coelho", "Desenvolvedor Back-End", "Criador de APIs"],
@@ -58,11 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
         projects: [
             {
                 id: 1,
+                completed: true,
                 title: { pt: "BuscaSUS – API de Acesso a Serviços de Saude ", en: "BuscaSUS – Health Services Access API" },
                 status: { pt: "Concluído", en: "Completed" },
                 description: { pt: "Sistema back-end que integra dados públicos e a Google Maps Platform para oferecer informações geolocalizadas sobre serviços essenciais como saúde, cultura e educação.", en: "Back-end system that integrates public data and Google Maps Platform to provide geolocated information about essential services such as healthcare, culture, and education." },
                 technologies: ["Node.js", "Express", "MongoDB", "Render", "JWT", "Google Maps API", "Swagger"],
-                features: { 
+                features: {
                     pt: ["Integração com APIs governamentais", "Geolocalização com Google Maps", "Autenticação via JWT e Google/GitHub OAuth"],
                     en: ["Integration with government APIs", "Geolocation with Google Maps", "Authentication via JWT and Google/GitHub OAuth"]
                 },
@@ -70,32 +76,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 challenges: { pt: "Padronizar dados de APIs externas, implementar autenticação com múltiplos provedores e integrar de forma fluida a Google Maps Platform foram os maiores desafios.", en: "Standardizing data from external APIs, implementing multi-provider authentication, and seamlessly integrating the Google Maps Platform were the biggest challenges." },
                 learnings: { pt: "Aprofundei conhecimentos em integrações REST, autenticação segura, documentação com Swagger, arquitetura de microsserviços e modelagem com MongoDB.", en: "I deepened my knowledge in REST integrations, secure authentication, Swagger documentation, microservices architecture, and MongoDB modeling." },
                 githubLink: "https://github.com/Coelho-G-Dev/Desafio-05-Back-End",
-                images: ["assets/Busca Sus-Swagger.png", "assets/code-controler.png", "assets/code-placespng.png"]
+                images: ["assets/busca-sus-swagger.png", "assets/code-controler.png", "assets/code-placespng.png"]
             },
             {
-                "id": 2,
-                "title": { "pt": "Guia Maranhão – API de Serviços Públicos", "en": "Guia Maranhão – Public Services API" },
-                "status": { "pt": "Em desenvolvimento", "en": "In development" },
-                "description": { "pt": "Projeto Full-Stack para centralizar e facilitar o acesso a informações sobre serviços públicos no estado do Maranhão. A fase atual foca no desenvolvimento de uma API RESTful robusta, integrando dados do IBGE e a Google Maps Platform.", "en": "Full-Stack project to centralize and facilitate access to information about public services in the state of Maranhão. The current phase focuses on developing a robust RESTful API, integrating data from IBGE and the Google Maps Platform." },
-                "technologies": ["Node.js", "Express", "MongoDB", "Mongoose", "JWT", "Google Maps API", "Swagger"],
-                "features": { 
-                    "pt": ["Integração com a API de localidades do IBGE", "Geolocalização e busca de locais com Google Places API", "Autenticação de usuários com JSON Web Tokens (JWT)", "Arquitetura resiliente com fallback para dados locais"],
-                    "en": ["Integration with IBGE's locations API", "Geolocation and location search with Google Places API", "User authentication with JSON Web Tokens (JWT)", "Resilient architecture with local data fallback"]
+                id: 2,
+                completed: false,
+                title: { pt: "Guia Maranhão – API de Serviços Públicos", en: "Guia Maranhão – Public Services API" },
+                status: { pt: "Em desenvolvimento", en: "In development" },
+                description: { pt: "Projeto Full-Stack para centralizar e facilitar o acesso a informações sobre serviços públicos no estado do Maranhão. A fase atual foca no desenvolvimento de uma API RESTful robusta, integrando dados do IBGE e a Google Maps Platform.", en: "Full-Stack project to centralize and facilitate access to information about public services in the state of Maranhão. The current phase focuses on developing a robust RESTful API, integrating data from IBGE and the Google Maps Platform." },
+                technologies: ["Node.js", "Express", "MongoDB", "Mongoose", "JWT", "Google Maps API", "Swagger"],
+                features: {
+                    pt: ["Integração com a API de localidades do IBGE", "Geolocalização e busca de locais com Google Places API", "Autenticação de usuários com JSON Web Tokens (JWT)", "Arquitetura resiliente com fallback para dados locais"],
+                    en: ["Integration with IBGE's locations API", "Geolocation and location search with Google Places API", "User authentication with JSON Web Tokens (JWT)", "Resilient architecture with local data fallback"]
                 },
-                "summary": { "pt": "Este projeto consiste em uma API robusta, documentada e resiliente, focada em facilitar o acesso da população maranhense a serviços públicos essenciais através da geolocalização.", "en": "This project consists of a robust, documented, and resilient API focused on facilitating access for the population of Maranhão to essential public services through geolocation." },
-                "challenges": { "pt": "Os principais desafios incluem a implementação de uma arquitetura resiliente que funcione offline, a padronização de dados de diferentes fontes (IBGE, Google) e a garantia da segurança das rotas autenticadas.", "en": "The main challenges include implementing a resilient architecture that works offline, standardizing data from different sources (IBGE, Google), and ensuring the security of authenticated routes." },
-                "learnings": { "pt": "Aprofundei conhecimentos em arquitetura de APIs RESTful com Node.js, modelagem de dados com Mongoose, estratégias de fallback para serviços externos, e autenticação segura com JWT.", "en": "I deepened my knowledge in RESTful API architecture with Node.js, data modeling with Mongoose, fallback strategies for external services, and secure authentication with JWT." },
-                "githubLink": "https://github.com/Coelho-G-Dev/Guia-Maranhao",
-                "images": ["assets/code-guia01.png", "assets/guia-02.png"]
+                summary: { pt: "Este projeto consiste em uma API robusta, documentada e resiliente, focada em facilitar o acesso da população maranhense a serviços públicos essenciais através da geolocalização.", en: "This project consists of a robust, documented, and resilient API focused on facilitating access for the population of Maranhão to essential public services through geolocation." },
+                challenges: { pt: "Os principais desafios incluem a implementação de uma arquitetura resiliente que funcione offline, a padronização de dados de diferentes fontes (IBGE, Google) e a garantia da segurança das rotas autenticadas.", en: "The main challenges include implementing a resilient architecture that works offline, standardizing data from different sources (IBGE, Google), and ensuring the security of authenticated routes." },
+                learnings: { pt: "Aprofundei conhecimentos em arquitetura de APIs RESTful com Node.js, modelagem de dados com Mongoose, estratégias de fallback para serviços externos, e autenticação segura com JWT.", en: "I deepened my knowledge in RESTful API architecture with Node.js, data modeling with Mongoose, fallback strategies for external services, and secure authentication with JWT." },
+                githubLink: "https://github.com/Coelho-G-Dev/Guia-Maranhao",
+                images: ["assets/code-guia01.png", "assets/guia-02.png"]
             }
         ]
     };
+
+    // Uma única fonte de verdade pro status: elimina a comparação frágil de texto traduzido
+    const getStatusClass = (project) => project.completed ? 'concluido' : 'em-desenvolvimento';
 
     const LanguageSwitcher = {
         currentLang: 'pt',
         init() {
             this.langToggleButton = document.getElementById('lang-toggle');
-            this.langToggleMobileButton = document.getElementById('lang-toggle-mobile'); 
             this.loadLanguage();
             this.addEventListeners();
         },
@@ -107,31 +116,30 @@ document.addEventListener('DOMContentLoaded', () => {
             this.currentLang = lang;
             localStorage.setItem('language', lang);
             document.documentElement.lang = lang;
-            
-            const langText = lang.toUpperCase();
-            if (this.langToggleButton) this.langToggleButton.querySelector('span').textContent = langText;
-            if (this.langToggleMobileButton) this.langToggleMobileButton.querySelector('span').textContent = langText; 
-            
+
+            if (this.langToggleButton) {
+                this.langToggleButton.querySelector('span').textContent = lang.toUpperCase();
+                this.langToggleButton.setAttribute('aria-label', translations[lang].ariaLang);
+            }
+            document.getElementById('theme-toggle')?.setAttribute('aria-label', translations[lang].ariaTheme);
+            document.querySelector('.hamburger')?.setAttribute('aria-label', lang === 'pt' ? 'Abrir menu' : 'Open menu');
+
             this.applyTranslations();
         },
         applyTranslations() {
-            const elements = document.querySelectorAll('[data-lang-key]');
-            elements.forEach(el => {
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
                 const key = el.dataset.langKey;
-                if (translations[this.currentLang] && translations[this.currentLang][key]) {
-                    el.innerHTML = translations[this.currentLang][key];
+                if (translations[this.currentLang]?.[key]) {
+                    el.textContent = translations[this.currentLang][key];
                 }
             });
             ProjectManager.renderProjects();
             Animations.initTypingEffect();
         },
         addEventListeners() {
-            const toggleLang = () => {
-                const newLang = this.currentLang === 'pt' ? 'en' : 'pt';
-                this.setLanguage(newLang);
-            };
-            if (this.langToggleButton) this.langToggleButton.addEventListener('click', toggleLang);
-            if (this.langToggleMobileButton) this.langToggleMobileButton.addEventListener('click', toggleLang); 
+            this.langToggleButton?.addEventListener('click', () => {
+                this.setLanguage(this.currentLang === 'pt' ? 'en' : 'pt');
+            });
         }
     };
 
@@ -143,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         handleHamburgerMenu() {
             const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
+            const navMenu = document.getElementById('nav-menu');
             const navLinks = document.querySelectorAll('.nav-link');
             const body = document.body;
             if (!hamburger || !navMenu) return;
@@ -152,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 navMenu.classList.remove('active');
                 hamburger.querySelector('i').classList.add('fa-bars');
                 hamburger.querySelector('i').classList.remove('fa-times');
+                hamburger.setAttribute('aria-expanded', 'false');
                 body.classList.remove('no-scroll');
             };
 
@@ -159,74 +168,58 @@ document.addEventListener('DOMContentLoaded', () => {
                 navMenu.classList.add('active');
                 hamburger.querySelector('i').classList.remove('fa-bars');
                 hamburger.querySelector('i').classList.add('fa-times');
+                hamburger.setAttribute('aria-expanded', 'true');
                 body.classList.add('no-scroll');
             };
 
             hamburger.addEventListener('click', () => {
-                if (navMenu.classList.contains('active')) {
-                    closeMenu();
-                } else {
-                    openMenu();
-                }
+                navMenu.classList.contains('active') ? closeMenu() : openMenu();
             });
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', closeMenu);
-            });
+            navLinks.forEach(link => link.addEventListener('click', closeMenu));
 
             window.addEventListener('resize', () => {
-                if (window.innerWidth > 768) {
-                    closeMenu();
-                }
+                if (window.innerWidth > 900) closeMenu();
             });
         },
         handleThemeToggle() {
             const themeToggleButton = document.getElementById('theme-toggle');
-            const themeToggleMobileButton = document.getElementById('theme-toggle-mobile'); 
 
             const applyTheme = (theme) => {
                 document.body.classList.toggle('light-theme', theme === 'light');
                 const iconClass = theme === 'light' ? 'fa-moon' : 'fa-sun';
                 if (themeToggleButton) themeToggleButton.querySelector('i').className = `fas ${iconClass}`;
-                if (themeToggleMobileButton) themeToggleMobileButton.querySelector('i').className = `fas ${iconClass}`; 
             };
-            
-            const toggleTheme = () => {
+
+            themeToggleButton?.addEventListener('click', () => {
                 const newTheme = document.body.classList.contains('light-theme') ? 'dark' : 'light';
                 localStorage.setItem('theme', newTheme);
                 applyTheme(newTheme);
-            };
+            });
 
-            if (themeToggleButton) themeToggleButton.addEventListener('click', toggleTheme);
-            if (themeToggleMobileButton) themeToggleMobileButton.addEventListener('click', toggleTheme); 
-            
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            applyTheme(savedTheme);
+            applyTheme(localStorage.getItem('theme') || 'dark');
         },
         handleActiveLinkOnScroll() {
             const sections = document.querySelectorAll('.section');
             const navLinks = document.querySelectorAll('.nav-link');
-            const header = document.querySelector('.header');
-            if (sections.length === 0 || navLinks.length === 0 || !header) return;
-            const headerHeight = header.offsetHeight;
-            const updateActiveLink = () => {
-                const scrollY = window.scrollY;
-                let activeSectionId = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - headerHeight - 5;
-                    if (scrollY >= sectionTop) {
-                        activeSectionId = section.getAttribute('id');
-                    }
-                });
+            if (sections.length === 0 || navLinks.length === 0) return;
+
+            const setActive = (id) => {
                 navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${activeSectionId}`) {
-                        link.classList.add('active');
-                    }
+                    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
                 });
             };
-            window.addEventListener('scroll', updateActiveLink);
-            updateActiveLink();
+
+            // IntersectionObserver troca o listener de scroll (que recalculava
+            // offsetTop a cada frame) por um cálculo feito só quando uma seção
+            // realmente cruza a linha de referência.
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) setActive(entry.target.id);
+                });
+            }, { rootMargin: `-${document.querySelector('.header')?.offsetHeight ?? 80}px 0px -60% 0px` });
+
+            sections.forEach(section => observer.observe(section));
         }
     };
 
@@ -240,8 +233,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const typingTextSpan = document.querySelector('.typing-text');
             if (!typingTextSpan) return;
             clearTimeout(this.currentTypingTimeout);
-            typingTextSpan.textContent = '';
+
             const textArray = portfolioData.typingEffect[LanguageSwitcher.currentLang];
+
+            if (prefersReducedMotion) {
+                typingTextSpan.textContent = textArray[0];
+                return;
+            }
+
+            typingTextSpan.textContent = '';
             const type = (textArrayIndex = 0, charIndex = 0) => {
                 if (charIndex < textArray[textArrayIndex].length) {
                     typingTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
@@ -262,6 +262,10 @@ document.addEventListener('DOMContentLoaded', () => {
             type();
         },
         initScrollReveal() {
+            if (prefersReducedMotion) {
+                document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+                return;
+            }
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -277,6 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ProjectManager = {
         currentProject: null,
         currentImageIndex: 0,
+        lastFocusedElement: null,
         init() {
             this.projectsGrid = document.querySelector('.projetos-grid-new');
             this.modal = document.getElementById('project-modal');
@@ -288,18 +293,20 @@ document.addEventListener('DOMContentLoaded', () => {
             this.projectsGrid.innerHTML = '';
             portfolioData.projects.forEach((project) => {
                 const lang = LanguageSwitcher.currentLang;
-                const card = document.createElement('div');
+                // <button> real em vez de <div> clicável: dá foco, Enter/Space
+                // e leitura de leitor de tela de graça, sem JS extra.
+                const card = document.createElement('button');
+                card.type = 'button';
                 card.className = 'project-card-new reveal';
                 card.dataset.projectId = project.id;
-                const statusText = project.status[lang];
-                const statusClass = statusText.toLowerCase().includes('concluído') || statusText.toLowerCase().includes('completed') ? 'concluido' : 'em-desenvolvimento';
+                const statusClass = getStatusClass(project);
                 card.innerHTML = `
                     <div class="project-card-header">
                         <div class="project-card-header-top">
-                            <h3><i class="fas fa-code-branch"></i> ${project.title[lang]}</h3>
-                            <i class="fas fa-external-link-alt"></i>
+                            <h3><i class="fas fa-code-branch" aria-hidden="true"></i> ${project.title[lang]}</h3>
+                            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                         </div>
-                        <span class="status-badge ${statusClass}">${statusText}</span>
+                        <span class="status-badge ${statusClass}">${project.status[lang]}</span>
                     </div>
                     <div class="project-card-body"><p>${project.description[lang]}</p></div>
                     <div class="project-card-footer">${translations[lang].projectCardFooter} →</div>
@@ -308,15 +315,18 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             Animations.initScrollReveal();
         },
-        openModal(projectId) {
+        openModal(projectId, triggerEl) {
             const project = portfolioData.projects.find(p => p.id == projectId);
             if (!project) return;
             this.currentProject = project;
+            this.lastFocusedElement = triggerEl ?? document.activeElement;
             const lang = LanguageSwitcher.currentLang;
+            const statusClass = getStatusClass(project);
+
             this.modal.querySelector('#modal-project-title').textContent = project.title[lang];
             const statusBadge = this.modal.querySelector('#modal-project-status');
             statusBadge.textContent = project.status[lang];
-            statusBadge.className = `status-badge ${project.status[lang].toLowerCase().includes('concluído') || project.status[lang].toLowerCase().includes('completed') ? 'concluido' : 'em-desenvolvimento'}`;
+            statusBadge.className = `status-badge ${statusClass}`;
             this.modal.querySelector('#modal-project-description').textContent = project.description[lang];
             this.modal.querySelector('#modal-github-link').href = project.githubLink;
             this.modal.querySelector('#modal-summary').textContent = project.summary[lang];
@@ -325,17 +335,19 @@ document.addEventListener('DOMContentLoaded', () => {
             this.modal.querySelector('#modal-tech-tags').innerHTML = project.technologies.map(tech => `<span>${tech}</span>`).join('');
             this.modal.querySelector('#modal-features-list').innerHTML = project.features[lang].map(feat => `<li>${feat}</li>`).join('');
             this.modal.querySelector('#modal-info-list').innerHTML = `
-                <li><strong>Status:</strong> <span class="status-badge ${statusBadge.className.includes('concluido') ? 'concluido' : 'em-desenvolvimento'}">${project.status[lang]}</span></li>
-                <li><strong>Repositório:</strong> <a href="${project.githubLink}" target="_blank">GitHub <i class="fas fa-external-link-alt"></i></a></li>
+                <li><strong>Status:</strong> <span class="status-badge ${statusClass}">${project.status[lang]}</span></li>
+                <li><strong>Repositório:</strong> <a href="${project.githubLink}" target="_blank" rel="noopener noreferrer">GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i></a></li>
             `;
             this.currentImageIndex = 0;
             this.updateGallery();
             this.modal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            this.modal.focus();
         },
         closeModal() {
             this.modal.classList.remove('active');
             document.body.style.overflow = '';
+            this.lastFocusedElement?.focus();
         },
         updateGallery() {
             if (!this.currentProject) return;
@@ -344,14 +356,39 @@ document.addEventListener('DOMContentLoaded', () => {
             const thumbnailsContainer = this.modal.querySelector('#gallery-thumbnails');
             thumbnailsContainer.innerHTML = this.currentProject.images.map((imgSrc, index) => `<img src="${imgSrc}" alt="Thumbnail ${index + 1}" data-index="${index}" class="${index === this.currentImageIndex ? 'active' : ''}">`).join('');
         },
+        getFocusableElements() {
+            return this.modal.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])');
+        },
         addEventListeners() {
             this.projectsGrid.addEventListener('click', e => {
                 const card = e.target.closest('.project-card-new');
-                if (card) this.openModal(card.dataset.projectId);
+                if (card) this.openModal(card.dataset.projectId, card);
             });
             this.modal.querySelector('#modal-close-btn').addEventListener('click', () => this.closeModal());
             this.modal.querySelector('#modal-back-btn').addEventListener('click', e => { e.preventDefault(); this.closeModal(); });
             this.modal.addEventListener('click', e => { if (e.target === this.modal) this.closeModal(); });
+
+            // Esc fecha e Tab fica preso dentro do modal (focus trap simples)
+            this.modal.addEventListener('keydown', e => {
+                if (!this.modal.classList.contains('active')) return;
+                if (e.key === 'Escape') {
+                    this.closeModal();
+                    return;
+                }
+                if (e.key !== 'Tab') return;
+                const focusable = this.getFocusableElements();
+                if (focusable.length === 0) return;
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            });
+
             this.modal.querySelector('.gallery').addEventListener('click', e => {
                 if (!this.currentProject) return;
                 const totalImages = this.currentProject.images.length;

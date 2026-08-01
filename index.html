@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-lang-key="pageTitle">Gabriel Coelho - Desenvolvedor Back-End</title>
-    
+
+    <meta name="description" content="Gabriel Coelho, desenvolvedor back-end. APIs robustas e seguras com Node.js, Express, MongoDB e Java com Spring Boot.">
+    <meta property="og:title" content="Gabriel Coelho - Desenvolvedor Back-End">
+    <meta property="og:description" content="Portfólio de projetos back-end com Node.js, Express, MongoDB e Java/Spring Boot.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/img02.jpg">
+    <meta name="theme-color" content="#161625">
+    <link rel="icon" href="assets/logo_portifolio.svg" sizes="any">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="css/style.css">
@@ -17,37 +25,32 @@
 </head>
 <body>
 
+    <a href="#sobre" class="skip-link" data-lang-key="skipLink">Pular para o conteúdo</a>
+
     <header class="header">
         <div class="container">
             <a href="#sobre" class="logo">Gabriel Coelho</a>
-            <nav class="nav-menu">
+
+            <nav class="nav-menu" id="nav-menu">
                 <ul class="nav-list">
-                    <li><a href="#sobre" class="nav-link"><i class="fas fa-user"></i> <span data-lang-key="navAbout">Sobre</span></a></li>
-                    <li><a href="#habilidades" class="nav-link"><i class="fas fa-code"></i> <span data-lang-key="navSkills">Habilidades</span></a></li>
-                    <li><a href="#projetos" class="nav-link"><i class="fas fa-briefcase"></i> <span data-lang-key="navProjects">Projetos</span></a></li>
-                    <li><a href="#experiencia" class="nav-link"><i class="fas fa-star"></i> <span data-lang-key="navExperience">Experiência</span></a></li>
-                    <li><a href="#contato" class="nav-link"><i class="fas fa-envelope"></i> <span data-lang-key="navContact">Contato</span></a></li>
+                    <li><a href="#sobre" class="nav-link"><i class="fas fa-user" aria-hidden="true"></i> <span data-lang-key="navAbout">Sobre</span></a></li>
+                    <li><a href="#habilidades" class="nav-link"><i class="fas fa-code" aria-hidden="true"></i> <span data-lang-key="navSkills">Habilidades</span></a></li>
+                    <li><a href="#projetos" class="nav-link"><i class="fas fa-briefcase" aria-hidden="true"></i> <span data-lang-key="navProjects">Projetos</span></a></li>
+                    <li><a href="#experiencia" class="nav-link"><i class="fas fa-star" aria-hidden="true"></i> <span data-lang-key="navExperience">Experiência</span></a></li>
+                    <li><a href="#contato" class="nav-link"><i class="fas fa-envelope" aria-hidden="true"></i> <span data-lang-key="navContact">Contato</span></a></li>
                 </ul>
-                <div class="mobile-nav-controls">
-                    <button id="theme-toggle-mobile" class="theme-toggle-btn" aria-label="Mudar tema">
-                        <i class="fas fa-sun"></i>
+                <div class="nav-controls">
+                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Mudar tema" data-lang-attr="ariaTheme">
+                        <i class="fas fa-sun" aria-hidden="true"></i>
                     </button>
-                    <button id="lang-toggle-mobile" class="theme-toggle-btn" aria-label="Mudar idioma">
+                    <button id="lang-toggle" class="theme-toggle-btn" aria-label="Mudar idioma" data-lang-attr="ariaLang">
                         <span>PT</span>
                     </button>
                 </div>
-                
             </nav>
-            <div class="header-controls">
-                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Mudar tema">
-                    <i class="fas fa-sun"></i>
-                </button>
-                <button id="lang-toggle" class="theme-toggle-btn" aria-label="Mudar idioma">
-                    <span>PT</span>
-                </button>
-            </div>
-            <button class="hamburger">
-                <i class="fas fa-bars"></i>
+
+            <button class="hamburger" aria-label="Abrir menu" aria-controls="nav-menu" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
         </div>
     </header>
@@ -58,17 +61,18 @@
                 <div class="home-content">
                     <div class="home-text">
                         <h1>
-                            <span data-lang-key="heroTitle">Olá, eu sou </span><span class="typing-text"></span>
+                            <span data-lang-key="heroTitle">Olá, eu sou </span><span class="typing-text" aria-hidden="true"></span>
+                            <span class="sr-only">Gabriel Coelho</span>
                         </h1>
-                        <p data-lang-key="heroSubtitle">Graduando em Ciencias e Tecnologia (UFMA)Desenvolvedor Back-End apaixonado por criar APIs robustas, escaláveis e seguras com Node.js, Express e MongoDB.</p>
+                        <p data-lang-key="heroSubtitle">Graduando em Ciencias e Tecnologia (UFMA) Desenvolvedor Back-End apaixonado por criar APIs robustas, escaláveis e seguras com Node.js, Express e MongoDB, atualmente sigo aprofundado meus conhecimentos em Java com SpringBoot.</p>
                         <div class="social-links">
-                            <a href="https://www.linkedin.com/in/gabriel-coelho-7184a32a3/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://github.com/Coelho-G-Dev" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                            <a href="mailto:gabrielbiellosousa@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="https://www.linkedin.com/in/gabriel-coelho-7184a32a3/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="https://github.com/Coelho-G-Dev" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                            <a href="mailto:gabrielbiellosousa@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="home-image">
-                        <img src="/assets/img02.jpg" alt="Foto de Gabriel Coelho">
+                        <img src="assets/img02.jpg" alt="Foto de Gabriel Coelho" width="350" height="350" fetchpriority="high">
                     </div>
                 </div>
             </div>
@@ -76,27 +80,27 @@
 
         <section id="competencias" class="section reveal">
             <div class="container">
-                <h3 class="competencies-title" data-lang-key="competenciesTitle">Principais Competências</h3>
+                <h2 class="competencies-title" data-lang-key="competenciesTitle">Principais Competências</h2>
                 <div class="competencies-tags-container">
                     <span class="competency-tag">Node.js</span>
                     <span class="competency-tag">Express.js</span>
                     <span class="competency-tag">Java</span>
                     <span class="competency-tag">Spring Boot</span>
                     <span class="competency-tag">MongoDB</span>
-                    <span class="competency-tag">SQL / MySQL</span>
+                    <span class="competency-tag">SQL - MySQL</span>
                     <span class="competency-tag">API REST</span>
                     <span class="competency-tag">Autenticação JWT</span>
                 </div>
             </div>
         </section>
-        
+
         <section id="habilidades" class="section reveal">
             <div class="container">
                 <h2><span data-lang-key="skillsTitle1">Minhas</span> <span class="highlight" data-lang-key="skillsTitle2">Habilidades</span></h2>
                 <p class="section-subtitle" data-lang-key="skillsSubtitle">As tecnologias e ferramentas que utilizo no meu dia a dia para criar soluções eficientes.</p>
                 <div class="skills-grid">
                     <div class="skill-card">
-                        <div class="skill-card-icon"><i class="fas fa-terminal"></i></div>
+                        <div class="skill-card-icon"><i class="fas fa-terminal" aria-hidden="true"></i></div>
                         <h3 class="skill-card-title" data-lang-key="skillsCat1">Linguagens</h3>
                         <ul class="skill-list">
                             <li>JavaScript</li>
@@ -106,7 +110,7 @@
                         </ul>
                     </div>
                     <div class="skill-card">
-                        <div class="skill-card-icon"><i class="fas fa-cubes"></i></div>
+                        <div class="skill-card-icon"><i class="fas fa-cubes" aria-hidden="true"></i></div>
                         <h3 class="skill-card-title" data-lang-key="skillsCat2">Frameworks & Bibliotecas</h3>
                         <ul class="skill-list">
                             <li>Node.js</li>
@@ -116,16 +120,16 @@
                         </ul>
                     </div>
                     <div class="skill-card">
-                        <div class="skill-card-icon"><i class="fas fa-database"></i></div>
+                        <div class="skill-card-icon"><i class="fas fa-database" aria-hidden="true"></i></div>
                         <h3 class="skill-card-title" data-lang-key="skillsCat3">Bancos de Dados</h3>
                         <ul class="skill-list">
                             <li>MongoDB</li>
                             <li>MySQL</li>
-                            <li>postgresql</li>
+                            <li>Postgresql</li>
                         </ul>
                     </div>
                     <div class="skill-card">
-                        <div class="skill-card-icon"><i class="fas fa-tools"></i></div>
+                        <div class="skill-card-icon"><i class="fas fa-tools" aria-hidden="true"></i></div>
                         <h3 class="skill-card-title" data-lang-key="skillsCat4">Ferramentas & DevOps</h3>
                         <ul class="skill-list">
                             <li>Git & GitHub</li>
@@ -152,27 +156,27 @@
                 <p class="section-subtitle" data-lang-key="experienceSubtitle">Em breve, minha trajetória profissional.</p>
             </div>
         </section>
-        
+
         <section id="contato" class="section reveal">
             <div class="container">
                 <h2><span data-lang-key="contactTitle1">Vamos</span> <span class="highlight" data-lang-key="contactTitle2">Conversar</span></h2>
                 <p class="section-subtitle" data-lang-key="contactSubtitle">Interessado em colaborar ou tem alguma pergunta? Entre em contato!</p>
                 <div class="contact-grid">
                     <a href="mailto:gabrielbiellosousa@gmail.com" class="contact-card">
-                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
                         <div class="contact-info"><h3 data-lang-key="contactEmail">Email</h3><p>gabrielbiellosousa@gmail.com</p></div>
                     </a>
-                    <a href="https://github.com/Coelho-G-Dev" target="_blank" class="contact-card">
-                        <div class="contact-icon"><i class="fab fa-github"></i></div>
+                    <a href="https://github.com/Coelho-G-Dev" target="_blank" rel="noopener noreferrer" class="contact-card">
+                        <div class="contact-icon"><i class="fab fa-github" aria-hidden="true"></i></div>
                         <div class="contact-info"><h3>GitHub</h3><p>Coelho-G-Dev</p></div>
                     </a>
-                    <a href="https://www.linkedin.com/in/gabriel-coelho-7184a32a3/" target="_blank" class="contact-card">
-                        <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+                    <a href="https://www.linkedin.com/in/gabriel-coelho-7184a32a3/" target="_blank" rel="noopener noreferrer" class="contact-card">
+                        <div class="contact-icon"><i class="fab fa-linkedin" aria-hidden="true"></i></div>
                         <div class="contact-info"><h3>LinkedIn</h3><p>Gabriel Coelho</p></div>
                     </a>
                     <div class="contact-card">
-                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="contact-info"><h3 data-lang-key="contactLocation">Localização</h3><p>São Luis, Brasil </p></div>
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
+                        <div class="contact-info"><h3 data-lang-key="contactLocation">Localização</h3><p>São Luis, Brasil</p></div>
                     </div>
                 </div>
             </div>
@@ -198,25 +202,25 @@
             <div class="footer-col">
                 <h3 data-lang-key="footerConnectTitle">Conecte-se</h3>
                 <div class="footer-socials">
-                    <a href="https://github.com/Coelho-G-Dev" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/gabriel-coelho-7184a32a3/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Coelho-G-Dev" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/gabriel-coelho-7184a32a3/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
                 </div>
                 <p data-lang-key="footerCta">Disponível para oportunidades e projetos interessantes.</p>
             </div>
         </div>
     </footer>
 
-    <div id="project-modal" class="project-modal">
+    <div id="project-modal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-project-title" tabindex="-1">
         <div class="modal-content">
-            <button id="modal-close-btn" class="modal-close-btn"><i class="fas fa-times"></i></button>
+            <button id="modal-close-btn" class="modal-close-btn" aria-label="Fechar"><i class="fas fa-times" aria-hidden="true"></i></button>
             <div class="modal-header">
-                <a id="modal-back-btn" href="#" class="modal-back-btn"><i class="fas fa-arrow-left"></i> <span data-lang-key="modalBack">Voltar aos projetos</span></a>
+                <a id="modal-back-btn" href="#" class="modal-back-btn"><i class="fas fa-arrow-left" aria-hidden="true"></i> <span data-lang-key="modalBack">Voltar aos projetos</span></a>
                 <div id="modal-project-title-container">
                     <h2 id="modal-project-title"></h2>
                     <span id="modal-project-status" class="status-badge"></span>
                 </div>
                 <p id="modal-project-description"></p>
-                <a id="modal-github-link" href="#" target="_blank" class="btn"><i class="fab fa-github"></i> <span data-lang-key="modalGithubBtn">Ver no GitHub</span></a>
+                <a id="modal-github-link" href="#" target="_blank" rel="noopener noreferrer" class="btn"><i class="fab fa-github" aria-hidden="true"></i> <span data-lang-key="modalGithubBtn">Ver no GitHub</span></a>
             </div>
             <div class="modal-body">
                 <div class="modal-main-content">
@@ -224,8 +228,8 @@
                     <div class="gallery">
                         <div class="gallery-main-image">
                             <img id="gallery-current-image" src="" alt="Imagem principal do projeto">
-                            <button class="gallery-nav prev"><i class="fas fa-chevron-left"></i></button>
-                            <button class="gallery-nav next"><i class="fas fa-chevron-right"></i></button>
+                            <button class="gallery-nav prev" aria-label="Imagem anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                            <button class="gallery-nav next" aria-label="Próxima imagem"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
                             <span id="gallery-counter" class="gallery-counter"></span>
                         </div>
                         <div id="gallery-thumbnails" class="gallery-thumbnails"></div>
