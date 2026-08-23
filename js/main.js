@@ -94,11 +94,52 @@ document.addEventListener('DOMContentLoaded', () => {
                 learnings: { pt: "Aprofundei conhecimentos em arquitetura de APIs RESTful com Node.js, modelagem de dados com Mongoose, estratégias de fallback para serviços externos, e autenticação segura com JWT.", en: "I deepened my knowledge in RESTful API architecture with Node.js, data modeling with Mongoose, fallback strategies for external services, and secure authentication with JWT." },
                 githubLink: "https://github.com/Coelho-G-Dev/Guia-Maranhao",
                 images: ["assets/code-guia01.png", "assets/guia-02.png"]
+            },
+
+            {
+                id: 3,
+                completed: true,
+                title: { pt: "API Financeira Inteligente com IA", en: "Intelligent Financial API with AI" },
+                status: { pt: "Concluído", en: "Completed" },
+                description: { 
+                    pt: "API RESTful robusta para gestão financeira, integrando auditoria automatizada e geração de insights estruturados utilizando a Inteligência Artificial do Google Gemini.", 
+                    en: "Robust RESTful API for financial management, integrating automated auditing and structured insights generation using Google Gemini Artificial Intelligence." 
+                },
+                technologies: ["Node.js", "Express", "PostgreSQL", "Jest", "Supertest", "JWT", "Google Gemini AI", "Swagger"],
+                features: {
+                    pt: [
+                        "Autenticação e autorização seguras com JWT", 
+                        "Gestão completa de despesas com banco de dados relacional (PostgreSQL)", 
+                        "Auditoria financeira automatizada consultando a IA do Gemini",
+                        "Bateria de testes de integração em larga escala estruturada com Jest",
+                        "Proteção contra ataques de repetição utilizando Rate Limit"
+                    ],
+                    en: [
+                        "Secure authentication and authorization with JWT", 
+                        "Complete expense management with relational database (PostgreSQL)", 
+                        "Automated financial auditing by querying Gemini AI",
+                        "Large-scale integration test suite structured with Jest",
+                        "Protection against replay attacks using Rate Limit"
+                    ]
+                },
+                summary: { 
+                    pt: "Uma arquitetura de back-end avançada projetada para garantir segurança, performance e inteligência. A aplicação não apenas gerencia gastos e recebe requisições, mas atua como um conselheiro financeiro autônomo, lendo o histórico de consumo do banco de dados e gerando diagnósticos rápidos através de IA Generativa.", 
+                    en: "An advanced back-end architecture designed to ensure security, performance, and intelligence. The application not only manages expenses and receives requests, but acts as an autonomous financial advisor, reading the consumption history from the database and generating quick diagnostics through Generative AI." 
+                },
+                challenges: { 
+                    pt: "Os principais desafios envolveram isolar a arquitetura do servidor Express para permitir os testes automatizados sem conflito de portas, estruturar a comunicação resiliente com a API do Gemini e blindar as rotas com Rate Limit.", 
+                    en: "The main challenges involved isolating the Express server architecture to allow automated tests without port conflicts, structuring resilient communication with the Gemini API, and shielding routes with Rate Limit." 
+                },
+                learnings: { 
+                    pt: "Consolidei padrões avançados da indústria na estruturação de APIs Node.js, apliquei testes de estresse e baterias Data-Driven com Jest, e dominei a manipulação de prompts para consumo de modelos de Inteligência Artificial direto no back-end.", 
+                    en: "I consolidated advanced industry standards in structuring Node.js APIs, applied stress tests and Data-Driven batteries with Jest, and mastered prompt manipulation for consuming Artificial Intelligence models straight in the back-end." 
+                },
+                githubLink: "https://github.com/Coelho-G-Dev/api-financeira-inteligente", 
+                images: ["assets/api-swagger.png", "assets/api-jest.png", "assets/api-code.png"] 
             }
         ]
     };
 
-    // Uma única fonte de verdade pro status: elimina a comparação frágil de texto traduzido
     const getStatusClass = (project) => project.completed ? 'concluido' : 'em-desenvolvimento';
 
     const LanguageSwitcher = {
@@ -210,9 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             };
 
-            // IntersectionObserver troca o listener de scroll (que recalculava
-            // offsetTop a cada frame) por um cálculo feito só quando uma seção
-            // realmente cruza a linha de referência.
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) setActive(entry.target.id);
@@ -293,8 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.projectsGrid.innerHTML = '';
             portfolioData.projects.forEach((project) => {
                 const lang = LanguageSwitcher.currentLang;
-                // <button> real em vez de <div> clicável: dá foco, Enter/Space
-                // e leitura de leitor de tela de graça, sem JS extra.
+            
                 const card = document.createElement('button');
                 card.type = 'button';
                 card.className = 'project-card-new reveal';
@@ -368,7 +406,6 @@ document.addEventListener('DOMContentLoaded', () => {
             this.modal.querySelector('#modal-back-btn').addEventListener('click', e => { e.preventDefault(); this.closeModal(); });
             this.modal.addEventListener('click', e => { if (e.target === this.modal) this.closeModal(); });
 
-            // Esc fecha e Tab fica preso dentro do modal (focus trap simples)
             this.modal.addEventListener('keydown', e => {
                 if (!this.modal.classList.contains('active')) return;
                 if (e.key === 'Escape') {
